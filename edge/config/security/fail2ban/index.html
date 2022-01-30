@@ -1675,8 +1675,8 @@ Environment=&quot;DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns&quot;
 <p>Per container configuration is not supported, if you need that consider Podman instead.</p>
 </div>
 <h3 id="podman-with-slirp4netns-port-driver"><a class="toclink" href="#podman-with-slirp4netns-port-driver">Podman with <code>slirp4netns</code> port driver</a></h3>
-<p>[Rootless Podman][rootless::podman] requires adding the value <code>slirp4netns:port_handler=slirp4netns</code> to the <code>--network</code> CLI option, or <code>network_mode</code> setting in your <code>docker-compose.yml</code>.</p>
-<p>You must also add the ENV <code>NETWORK_INTERFACE=tap0</code>, because Podman uses a [hard-coded interface name][rootless::podman::interface] for <code>slirp4netns</code>.</p>
+<p><a href="https://github.com/containers/podman/blob/v3.4.1/docs/source/markdown/podman-run.1.md#--networkmode---net">Rootless Podman</a> requires adding the value <code>slirp4netns:port_handler=slirp4netns</code> to the <code>--network</code> CLI option, or <code>network_mode</code> setting in your <code>docker-compose.yml</code>.</p>
+<p>You must also add the ENV <code>NETWORK_INTERFACE=tap0</code>, because Podman uses a <a href="https://github.com/containers/podman/blob/v3.4.1/libpod/networking_slirp4netns.go#L264">hard-coded interface name</a> for <code>slirp4netns</code>.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span><span class="w"></span>
