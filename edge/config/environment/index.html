@@ -3702,7 +3702,11 @@ expand_keys = true;
 <p>When enabled,</p>
 <ol>
 <li>the "<a href="https://rspamd.com/doc/configuration/statistic.html#autolearning">autolearning</a>" feature is turned on;</li>
-<li>the Bayes classifier will be trained when moving mails from or to the Junk folder (with the help of Sieve scripts).</li>
+<li>the Bayes classifier will be trained (with the help of Sieve scripts) when moving mails<ol>
+<li>from anywhere to the <code>Junk</code> folder (learning this email as spam);</li>
+<li>from the <code>Junk</code> folder into the <code>INBOX</code> (learning this email as ham).</li>
+</ol>
+</li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Attention</p>
@@ -3714,7 +3718,7 @@ expand_keys = true;
 <li>1 =&gt; Enabled</li>
 </ul>
 <h5 id="rspamd_hfilter"><a class="toclink" href="#rspamd_hfilter">RSPAMD_HFILTER</a></h5>
-<p>Can be used to enable or disable the <a href="https://www.rspamd.com/doc/modules/hfilter.html">Hfilter group module</a>. This is used by DMS to adjust the <code>HFILTER_HOSTNAME_UNKNOWN</code> symbol, increasing it's default weight to act similar to Postfix's <code>reject_unknown_client_hostname</code>, without the need to outright reject a message.</p>
+<p>Can be used to enable or disable the <a href="https://www.rspamd.com/doc/modules/hfilter.html">Hfilter group module</a>. This is used by DMS to adjust the <code>HFILTER_HOSTNAME_UNKNOWN</code> symbol, increasing its default weight to act similar to Postfix's <code>reject_unknown_client_hostname</code>, without the need to outright reject a message.</p>
 <ul>
 <li>0 =&gt; Disabled</li>
 <li><strong>1</strong> =&gt; Enabled</li>
