@@ -1015,6 +1015,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#getmail" class="md-nav__link">
+    Getmail
+  </a>
+  
+    <nav class="md-nav" aria-label="Getmail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable_getmail" class="md-nav__link">
+    ENABLE_GETMAIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmail_poll" class="md-nav__link">
+    GETMAIL_POLL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ldap" class="md-nav__link">
     LDAP
   </a>
@@ -1922,6 +1949,20 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../advanced/mail-getmail/" class="md-nav__link">
+        Email Gathering with Getmail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
@@ -1930,17 +1971,17 @@
       
         
       
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_7" >
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8_8" >
       
       
       
-        <label class="md-nav__link" for="__nav_4_8_7" id="__nav_4_8_7_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_4_8_8" id="__nav_4_8_8_label" tabindex="0">
           Email Forwarding
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4_8_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_8_8">
           <span class="md-nav__icon md-icon"></span>
           Email Forwarding
         </label>
@@ -2933,6 +2974,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#getmail" class="md-nav__link">
+    Getmail
+  </a>
+  
+    <nav class="md-nav" aria-label="Getmail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable_getmail" class="md-nav__link">
+    ENABLE_GETMAIL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmail_poll" class="md-nav__link">
+    GETMAIL_POLL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ldap" class="md-nav__link">
     LDAP
   </a>
@@ -3402,6 +3470,19 @@
                   
 
   
+    <a href="https://github.com/docker-mailserver/docker-mailserver/edit/master/docs/content/config/environment.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/docker-mailserver/docker-mailserver/raw/master/docs/content/config/environment.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
   
 
 
@@ -3864,6 +3945,17 @@ If this is not set and reports are enabled with the old options, logrotate will 
 <p><strong>0</strong> =&gt; <code>fetchmail</code> runs with a single config file <code>/etc/fetchmailrc</code>
   <strong>1</strong> =&gt; <code>/etc/fetchmailrc</code> is split per poll entry. For every poll entry a separate fetchmail instance is started  to allow having multiple imap idle configurations defined.</p>
 <p>Note: The defaults of your fetchmailrc file need to be at the top of the file. Otherwise it won't be added correctly to all separate <code>fetchmail</code> instances.</p>
+<h4 id="getmail"><a class="toclink" href="#getmail">Getmail</a></h4>
+<h5 id="enable_getmail"><a class="toclink" href="#enable_getmail">ENABLE_GETMAIL</a></h5>
+<p>Enable or disable <code>getmail</code>.</p>
+<ul>
+<li><strong>0</strong> =&gt; Disabled</li>
+<li>1 =&gt; Enabled</li>
+</ul>
+<h5 id="getmail_poll"><a class="toclink" href="#getmail_poll">GETMAIL_POLL</a></h5>
+<ul>
+<li><strong>5</strong> =&gt; <code>getmail</code> The number of minutes for the interval. Min: 1; Max: 30; Default: 5.</li>
+</ul>
 <h4 id="ldap"><a class="toclink" href="#ldap">LDAP</a></h4>
 <h5 id="enable_ldap"><a class="toclink" href="#enable_ldap">ENABLE_LDAP</a></h5>
 <p>Deprecated. See <a href="#account_provisioner"><code>ACCOUNT_PROVISIONER</code></a>.</p>
@@ -4205,7 +4297,7 @@ you to replace both instead of just the envelope sender.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.407015b8.min.js"></script>
