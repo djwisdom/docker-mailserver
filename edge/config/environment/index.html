@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/logo/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
       
@@ -1165,6 +1165,15 @@
   <a href="#logrotate_interval" class="md-nav__link">
     <span class="md-ellipsis">
       LOGROTATE_INTERVAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logrotate_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      LOGROTATE_COUNT
     </span>
   </a>
   
@@ -3983,6 +3992,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#logrotate_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      LOGROTATE_COUNT
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5056,10 +5074,10 @@ ClamAV must be enabled (ENABLE_CLAMAV=1) for this.</p>
 <p>Note: More information at <a href="https://dovecot.org/doc/dovecot-example.conf">https://dovecot.org/doc/dovecot-example.conf</a></p>
 <h5 id="move_spam_to_junk"><a class="toclink" href="#move_spam_to_junk">MOVE_SPAM_TO_JUNK</a></h5>
 <ul>
-<li>0 =&gt; Spam messages will be delivered in the mailbox.</li>
-<li><strong>1</strong> =&gt; Spam messages will be delivered in the <code>Junk</code> folder.</li>
+<li>0 =&gt; Spam messages will be delivered to the inbox.</li>
+<li><strong>1</strong> =&gt; Spam messages will be delivered to the Junk mailbox.</li>
 </ul>
-<p>Routes mail identified as spam into the recipient(s) Junk folder (<em>via a Dovecot Sieve script</em>).</p>
+<p>Routes mail identified as spam into the recipient(s) Junk mailbox (<em>a specialized folder for junk associated to the <a href="../../examples/use-cases/imap-folders/">special-use flag <code>\Junk</code></a>, handled via a Dovecot sieve script internally</em>).</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Mail is received as spam when it has been marked with either header:</p>
@@ -5231,6 +5249,11 @@ If this is not set and reports are enabled with the old options, logrotate will 
 <p class="admonition-title">Note</p>
 <p>This variable can also determine the interval for Postfix's log summary reports, see <a href="#pflogsumm_trigger"><code>PFLOGSUMM_TRIGGER</code></a>.</p>
 </div>
+<h5 id="logrotate_count"><a class="toclink" href="#logrotate_count">LOGROTATE_COUNT</a></h5>
+<p>Defines how many files are kept by logrotate.</p>
+<ul>
+<li><strong>4</strong> =&gt; Number of files</li>
+</ul>
 <h4 id="spamassassin"><a class="toclink" href="#spamassassin">SpamAssassin</a></h4>
 <h5 id="enable_spamassassin"><a class="toclink" href="#enable_spamassassin">ENABLE_SPAMASSASSIN</a></h5>
 <ul>
@@ -5835,7 +5858,7 @@ you to replace both instead of just the envelope sender.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>

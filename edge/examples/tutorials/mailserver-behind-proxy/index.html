@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/logo/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
       
@@ -2271,6 +2271,7 @@
 </ul>
 <p>This reduces many of the benefits for why you might use a reverse proxy, but they can still be useful.</p>
 <p>Some deployments may require a service to route traffic (kubernetes) when deploying, in which case the below advice is important to understand well.</p>
+<p>The guide here has also been adapted for <a href="../../../config/advanced/kubernetes/#using-the-proxy-protocol">our Kubernetes docs</a>.</p>
 <h2 id="what-can-go-wrong"><a class="toclink" href="#what-can-go-wrong">What can go wrong?</a></h2>
 <p>Without a reverse proxy involved, a service is typically aware of the client IP for a connection.</p>
 <p>However when a reverse proxy routes the connection this information can be lost, and the proxied service mistakenly treats the client IP as the reverse proxy handling the connection.</p>
@@ -2655,7 +2656,7 @@ swaks<span class="w"> </span>--helo<span class="w"> </span>not-relevant.test<spa
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>
