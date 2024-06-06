@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/logo/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -180,7 +180,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -2624,6 +2624,16 @@
 <h3 id="web-interface"><a class="toclink" href="#web-interface">Web Interface</a></h3>
 <p>Rspamd provides a <a href="https://rspamd.com/webui/">web interface</a>, which contains statistics and data Rspamd collects. The interface is enabled by default and reachable on port 11334.</p>
 <p><img alt="Rspamd Web Interface" src="https://rspamd.com/img/webui.png" /></p>
+<p>To use the web interface you will need to configure a password, <a href="https://www.rspamd.com/doc/tutorials/quickstart.html#setting-the-controller-password">otherwise you won't be able to log in</a>.</p>
+<details class="example">
+<summary>Set a custom password</summary>
+<p>Add this line to <a href="#with-the-help-of-a-custom-file">your rspamd <code>custom-commands.conf</code> config</a> which sets the <code>password</code> option of the <em>controller worker</em>:</p>
+<div class="highlight"><pre><span></span><code>set-option-for-controller password &quot;your hashed password here&quot;
+</code></pre></div>
+<p>The password hash can be generated via the <code>rspamadm pw</code> command:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;CONTAINER_NAME&gt;<span class="w"> </span>rspamadm<span class="w"> </span>pw
+</code></pre></div>
+</details>
 <h3 id="dns"><a class="toclink" href="#dns">DNS</a></h3>
 <p>DMS does not supply custom values for DNS servers (to Rspamd). If you need to use custom DNS servers, which could be required when using <a href="#rbls-real-time-blacklists-dnsbls-dns-based-blacklists">DNS-based deny/allowlists</a>, you need to adjust <a href="https://rspamd.com/doc/configuration/options.html"><code>options.inc</code></a> yourself. Make sure to also read our <a href="../../../faq/#what-about-dns-servers">FAQ page on DNS servers</a>.</p>
 <div class="admonition warning">
@@ -2737,7 +2747,7 @@ disable-module<span class="w"> </span>chartable
 <ol>
 <li><a href="https://app.abusix.com/signup">Create an account</a></li>
 <li>Retrieve your API key</li>
-<li>Navigate to the <a href="https://docs.abusix.com/abusix-mail-intelligence/gbG8EcJ3x3fSUv8cMZLiwA/getting-started/dmw9dcwSGSNQiLTssFAnBW#rspamd">"Getting Started" documentation for Rspamd</a> and follow the steps described there</li>
+<li>Navigate to the <a href="https://abusix.com/docs/rspamd/">"Getting Started" documentation for Rspamd</a> and follow the steps described there</li>
 <li>Make sure to change <code>&lt;APIKEY&gt;</code> to your private API key</li>
 </ol>
 <p>We recommend mounting the files directly into the container, as they are rather big and not manageable with our <a href="#with-the-help-of-a-custom-file"><code>custom-command.conf</code> script</a>. If mounted to the correct location, Rspamd will automatically pick them up.</p>
@@ -2804,7 +2814,7 @@ disable-module<span class="w"> </span>chartable
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
     
   </body>
