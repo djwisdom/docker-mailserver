@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/logo/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -1795,6 +1795,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dovecot-solr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dovecot FTS with Apache Solr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2534,6 +2555,9 @@ postconf<span class="w"> </span>-P<span class="w"> </span><span class="m">10465<
 postconf<span class="w"> </span>-Mf<span class="w"> </span>smtp/inet<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span>s/^smtp/12525/<span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/postfix/master.cf
 <span class="c1"># Enable PROXY Protocol support (different setting as port 25 is handled via postscreen), optionally configure a `syslog_name` to distinguish in logs:</span>
 postconf<span class="w"> </span>-P<span class="w"> </span><span class="m">12525</span>/inet/postscreen_upstream_proxy_protocol<span class="o">=</span>haproxy<span class="w"> </span><span class="m">12525</span>/inet/syslog_name<span class="o">=</span>smtp-proxyprotocol
+</code></pre></div>
+<p>Supporting port 25 with an additional PROXY protocol port will also require a <code>postfix-main.cf</code> override line for <code>postscreen</code> to work correctly:</p>
+<div class="highlight"><span class="filename">docker-data/dms/config/postfix-main.cf</span><pre><span></span><code><span class="na">postscreen_cache_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">proxy:btree:$data_directory/postscreen_cache</span>
 </code></pre></div>
 <hr />
 <p>Dovecot is mostly the same as before:</p>
