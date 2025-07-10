@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../assets/logo/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -2675,7 +2675,7 @@
 
 
   
-    <a href="https://github.com/docker-mailserver/docker-mailserver/edit/master/docs/content/examples/tutorials/mailserver-behind-proxy.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/docker-mailserver/docker-mailserver/edit/master/docs/content/examples/tutorials/mailserver-behind-proxy.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2923,7 +2923,7 @@ postconf<span class="w"> </span>-P<span class="w"> </span><span class="m">10465<
 <span class="c1"># Create a variant for port 25 too (NOTE: Port 10025 is already assigned in DMS to Amavis):</span>
 postconf<span class="w"> </span>-Mf<span class="w"> </span>smtp/inet<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span>s/^smtp/12525/<span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/postfix/master.cf
 <span class="c1"># Enable PROXY Protocol support (different setting as port 25 is handled via postscreen), optionally configure a `syslog_name` to distinguish in logs:</span>
-postconf<span class="w"> </span>-P<span class="w"> </span><span class="m">12525</span>/inet/postscreen_upstream_proxy_protocol<span class="o">=</span>haproxy<span class="w"> </span><span class="m">12525</span>/inet/syslog_name<span class="o">=</span>smtp-proxyprotocol
+postconf<span class="w"> </span>-P<span class="w"> </span><span class="m">12525</span>/inet/postscreen_upstream_proxy_protocol<span class="o">=</span>haproxy<span class="w"> </span><span class="m">12525</span>/inet/syslog_name<span class="o">=</span>postfix/smtpd-proxyprotocol
 </code></pre></div>
 <p>Supporting port 25 with an additional PROXY protocol port will also require a <code>postfix-main.cf</code> override line for <code>postscreen</code> to work correctly:</p>
 <div class="highlight"><span class="filename">docker-data/dms/config/postfix-main.cf</span><pre><span></span><code><span class="na">postscreen_cache_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">proxy:btree:$data_directory/postscreen_cache</span>
@@ -2938,12 +2938,12 @@ postconf<span class="w"> </span>-P<span class="w"> </span><span class="m">12525<
 <div class="highlight"><span class="filename">docker-data/dms/config/dovecot.cf</span><pre><span></span><code><span class="na">haproxy_trusted_networks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">172.16.42.2</span>
 
 <span class="na">service imap-login {</span>
-<span class="w">  </span><span class="na">inet_listener imap-proxied {</span>
+<span class="w">  </span><span class="na">inet_listener imap-proxyprotocol {</span>
 <span class="w">    </span><span class="na">haproxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
 <span class="w">    </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10143</span>
 <span class="w">  </span><span class="na">}</span>
 
-<span class="w">  </span><span class="na">inet_listener imaps-proxied {</span>
+<span class="w">  </span><span class="na">inet_listener imaps-proxyprotocol {</span>
 <span class="w">    </span><span class="na">haproxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
 <span class="w">    </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10993</span>
 <span class="w">    </span><span class="na">ssl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
@@ -2951,12 +2951,12 @@ postconf<span class="w"> </span>-P<span class="w"> </span><span class="m">12525<
 <span class="na">}</span>
 
 <span class="na">service pop3-login {</span>
-<span class="w">  </span><span class="na">inet_listener pop3-proxied {</span>
+<span class="w">  </span><span class="na">inet_listener pop3-proxyprotocol {</span>
 <span class="w">    </span><span class="na">haproxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
 <span class="w">    </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10110</span>
 <span class="w">  </span><span class="na">}</span>
 
-<span class="w">  </span><span class="na">inet_listener pop3s-proxied {</span>
+<span class="w">  </span><span class="na">inet_listener pop3s-proxyprotocol {</span>
 <span class="w">    </span><span class="na">haproxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
 <span class="w">    </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10995</span>
 <span class="w">    </span><span class="na">ssl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
@@ -2964,7 +2964,7 @@ postconf<span class="w"> </span>-P<span class="w"> </span><span class="m">12525<
 <span class="na">}</span>
 
 <span class="na">service managesieve-login {</span>
-<span class="w">  </span><span class="na">inet_listener sieve-proxied {</span>
+<span class="w">  </span><span class="na">inet_listener sieve-proxyprotocol {</span>
 <span class="w">    </span><span class="na">haproxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
 <span class="w">    </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">14190</span>
 <span class="w">  </span><span class="na">}</span>
@@ -3093,7 +3093,7 @@ swaks<span class="w"> </span>--helo<span class="w"> </span>not-relevant.test<spa
       <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.expand", "navigation.instant", "content.action.edit", "content.action.view", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
